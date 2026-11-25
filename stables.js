@@ -1,12 +1,11 @@
-//--- Setting up shop (Assignment 1) ---//
+                    // --- Setting up shop (Assignment 1) ---//
 const stableName = "Sunny Stables";
 const lateFeeRate = 0.2;
 const welcomeMessage = `Welcome to ${stableName}!`;
 console.log(welcomeMessage);
 
-// --- Horse cards (Assignment 2) ---//
-// Each horse has a card with information about them. 
-// The card is an object with properties (name, age, favouriteTreat, fee, location, color, gender).
+                    // --- Horse cards (Assignment 2) ---//
+
 let angel = {
     name: "Angel",
     nickname: "Angie",
@@ -97,11 +96,24 @@ calculateLateFee(thomas);
 function getHorseNickname(horse) {
     return horse.nickname;
 }
-
-// The function gives back "Angel", and console.log prints it here, outside the function
 console.log(`Selected horse: ${getHorseNickname(angel)}`);
 
-// --- Day to day operations (Project 1) ---//
 
+                    // --- Day to day operations (Project 1) ---//
 
+const wantedTreat = "apples"; 
+for (const horse of horses) {
+    if (horse.favouriteTreat === wantedTreat) {
+        console.log(`${horse.name} loves ${wantedTreat}!`);
+    }
+    console.log(`${horse.name} doesn't like ${wantedTreat}. Next horse!`);
+}
+
+function describeHorse(horse) {
+    if (horse.gender === "mare") {
+        console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. He loves ${horse.favouriteTreat}.`);
+    }
+    console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. He loves ${horse.favouriteTreat}.`);
+}
+horses.forEach(describeHorse);
 
