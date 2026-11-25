@@ -125,40 +125,31 @@ console.log(`Selected horse: ${getHorseNickname(angel)}`);
 
                     // --- Day to day operations (Project 1) ---//
 
-const wantedTreat = "apples"; 
+// --- Day to day operations (Project) ---//
+
+const wantedTreat = "hay cubes";
 for (const horse of horses) {
     if (horse.favouriteTreat === wantedTreat) {
         console.log(`${horse.name} loves ${wantedTreat}!`);
+        break;
     }
     console.log(`${horse.name} doesn't like ${wantedTreat}. Next horse!`);
 }
 
 function describeHorse(horse) {
     if (horse.gender === "mare") {
+        console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. She loves ${horse.favouriteTreat}.`);
+    } else {
         console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. He loves ${horse.favouriteTreat}.`);
     }
-    console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. He loves ${horse.favouriteTreat}.`);
 }
 horses.forEach(describeHorse);
-
-function feedHorses() {
-    for (const horse of horses) {
-        if (horse.isOutside) {
-            horse.isOutside = false;
-            console.log(`${horse.name} has been moved inside.`);
-        }
-        horse.isHungry = false;
-        console.log(`${horse.name} has been fed ${horse.favouriteTreat} and is no longer hungry.`);
-    }
-}
-feedHorses();
-
 
 function moveOutside(isDark, horsesToMove) {
     for (const horse of horsesToMove) {
         if (isDark && horse.isOutside) {
             horse.isOutside = false;
-            console.log(`${horse.name} has been moved outside to spend time in the sun.`);
+            console.log(`${horse.name} has been moved inside because it is getting dark.`);
         } else if (!isDark && !horse.isOutside) {
             horse.isOutside = true;
             console.log(`${horse.name} has been moved outside to spend time in the sun.`);
@@ -166,17 +157,17 @@ function moveOutside(isDark, horsesToMove) {
     }
 }
 
-                        //--- Bonus ---//
-for(const horse of horses) {
-    horse.toggleLocation = function(){
-        if (this.isOutside === true) {
-            this.isOutside = false;
-        } else {
-            this.isOutside = true;
+function feedHorses() {
+    for (const horse of horses) {
+        if (horse.isOutside) {
+            horse.isOutside = false;
+            console.log(`${horse.name} has been called inside.`);
         }
+        horse.isHungry = false;
+        console.log(`${horse.name} has been fed ${horse.favouriteTreat} and is no longer hungry.`);
     }
 }
-console.log(`${angel.name} is outside: ${angel.isOutside}`); //true
-angel.toggleLocation();
-console.log(`${angel.name} is outside: ${angel.isOutside}`); //false
 
+moveOutside(false, [thomas, harry]);   // morning
+moveOutside(true, [angel, thomas]);    // getting dark
+feedHorses();
