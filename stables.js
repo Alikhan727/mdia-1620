@@ -117,3 +117,27 @@ function describeHorse(horse) {
 }
 horses.forEach(describeHorse);
 
+function feedHorses() {
+    for (const horse of horses) {
+        if (horse.isOutside) {
+            horse.isOutside = false;
+            console.log(`${horse.name} has been moved inside.`);
+        }
+        horse.isHungry = false;
+        console.log(`${horse.name} has been fed ${horse.favouriteTreat} and is no longer hungry.`);
+    }
+}
+feedHorses();
+
+
+function moveOutside(isDark, horsesToMove) {
+    for (const horse of horsesToMove) {
+        if (isDark && horse.isOutside) {
+            horse.isOutside = false;
+            console.log(`${horse.name} has been moved outside to spend time in the sun.`);
+        } else if (!isDark && !horse.isOutside) {
+            horse.isOutside = true;
+            console.log(`${horse.name} has been moved outside to spend time in the sun.`);
+        }
+    }
+}
