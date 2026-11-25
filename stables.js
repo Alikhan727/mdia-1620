@@ -1,4 +1,28 @@
-                    // --- Setting up shop (Assignment 1) ---//
+//          /\
+//         /  \
+//        /____\
+//        | [] |    SUNNY STABLES
+//        |    |
+//   _____|____|_____
+//  |  __   __   __  |
+//  | |  | |  | |  | |
+//  |_|__|_|__|_|__|_|
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// --- Setting up shop (Assignment 1) ---//
 const stableName = "Sunny Stables";
 const lateFeeRate = 0.2;
 const welcomeMessage = `Welcome to ${stableName}!`;
