@@ -42,7 +42,7 @@ let angel = {
 };
 
 
-// Same kind of card for Thomas. He is inside (location: false)
+// Same kind of card for Thomas. He is inside
 let thomas = {
     name: "Thomas",
     nickname: "Tommy",
@@ -55,7 +55,7 @@ let thomas = {
 };
 
 
-// Card for Daisy. She is outside (location: true)
+// Card for Daisy. She is outside
 let daisy = {
     name: "Daisy",
     nickname: "Daze",
@@ -70,7 +70,7 @@ let daisy = {
 const horses = [angel, thomas, daisy];
 
 
-// Card for Harry. He is inside (location: false)
+// Card for Harry. He is inside 
 // new horse
 let harry = {
     name: "Harry",
