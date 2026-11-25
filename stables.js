@@ -1,117 +1,173 @@
-console.log("Hello WORLD");
+//          /\
+//         /  \
+//        /____\
+//        | [] |               Welcome to SUNNY STABLES!
+//        |    |
+//   _____|____|_____
+//  |  __   __   __  |
+//  | |  | |  | |  | |
+//  |_|__|_|__|_|__|_|
+//    
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// --- Setting up shop (Assignment 1) ---//
+const stableName = "Sunny Stables";
+const lateFeeRate = 0.2;
+const welcomeMessage = `Welcome to ${stableName}!`;
+console.log(welcomeMessage);
 
-// An object is like a card with information about one thing.
-// Here it is a card for the horse Angel.
-// Each line is "property name: value".
+                    // --- Horse cards (Assignment 2) ---//
+
 let angel = {
-    name: "Angel", // text (string)
-    age: 8, // number
-    favouriteTreat: "apples", // text (string)
-    fee: 200, // number: how much the owner pays per month
-    location: true,      // true/false (boolean): true = outside, false = inside
-    color: "white", // my own extra property
-    gender: "mare" // my own extra property
+    name: "Angel",
+    nickname: "Angie",
+    age: 8,
+    favouriteTreat: "apples",
+    fee: 200,
+    isOutside: true,
+    color: "white",
+    gender: "mare"
 };
 
 
-// Same kind of card for Thomas. He is inside (location: false)
+// Same kind of card for Thomas. He is inside
 let thomas = {
-    name: "Thomas", 
+    name: "Thomas",
+    nickname: "Tommy",
     age: 10,
     favouriteTreat: "carrots",
     fee: 250,
-    location: false,
+    isOutside: false,
     color: "brown",
     gender: "stallion"
 };
 
 
-// Card for Daisy. She is outside (location: true)
+// Card for Daisy. She is outside
 let daisy = {
-    name: "Daisy", 
+    name: "Daisy",
+    nickname: "Daze",
     age: 6,
     favouriteTreat: "hay cubes",
     fee: 150,
-    location: true,
+    isOutside: true,
     color: "black",
     gender: "mare"
 };
 
-// Card for Harry. He is inside (location: false)
+const horses = [angel, thomas, daisy];
+
+
+// Card for Harry. He is inside 
+// new horse
 let harry = {
-    name: "Harry", 
+    name: "Harry",
+    nickname: "Hank",
     age: 6,
     favouriteTreat: "Chippy Chips",
     fee: 150,
-    location: false,
+    isOutside: false,
     color: "grey",
     gender: "gelding"
 };
 
+horses.push(harry)
 
-// An array is a list in square brackets.
-// This list holds all 4 horses, so I can count them or loop over them later.
-// Counting starts at 0: horses[0] is angel, horses[1] is thomas, and so on.
-let horses = [angel, thomas, daisy, harry];
 
-// Dot notation: object.property
-// Here I ADD a new property "isHungry" to each horse (true = hungry, false = not hungry)
+
+// Hungry status (dot notation)
 angel.isHungry = true;
 thomas.isHungry = false;
 daisy.isHungry = true;
 harry.isHungry = false;
 
-// A variable with the total number of stalls in the stable
-let totalStalls = 10;
 
-// A function is a block of code with a name that I can run whenever I want.
-// This one finds how many stalls are free and prints the number.
+const lateMessage = `${angel.name}'s payment is late. Amount owing: $${angel.fee + angel.fee * lateFeeRate}`;
+console.log(lateMessage);
+
+const totalStalls = 10;
+
+
+//function to check available stalls
 function checkAvailableStalls() {
-    // 10 stalls minus 4 horses (horses.length is the number of items in the array)
-    let availableStalls = totalStalls - horses.length;
-    // Backticks ` ` with ${} let me put a variable inside a text
+    const availableStalls = totalStalls - horses.length;
     console.log(`Available stalls: ${availableStalls}`);
 }
+
 // Calling the function (without this line it would never run)
 checkAvailableStalls();
 
-// The late fee is 20% extra. 0.2 means 20%
-let lateRateFee = 0.2;
-
-// This function has a parameter called "horse".
-// It is a placeholder: when I call the function, I give it a real horse.
 function calculateLateFee(horse) {
-    // Rent plus 20%: for example 250 * 1.2 = 300
-    let lateFee = horse.fee * (1 + lateRateFee);
-    // Prints the horse's name and the late fee
-    console.log(`${horse.name} late fee is $${lateFee}`);
-} 
-
-// Calling the function and giving it thomas, so "horse" becomes thomas
+    const lateFee = horse.fee + horse.fee * lateFeeRate;
+    console.log(`${horse.name}'s late fee is $${lateFee}`);
+}
 calculateLateFee(thomas);
 
-// This function RETURNS a value instead of printing it.
+// This function returns a value instead of printing it.
 // "return" gives the answer back to the place where the function was called.
 function getHorseNickname(horse) {
-    return horse.name; 
+    return horse.nickname;
 }
-// The function gives back "Angel", and console.log prints it here, outside the function
 console.log(`Selected horse: ${getHorseNickname(angel)}`);
 
 
+                    // --- Day to day operations (Project 1) ---//
 
+// --- Day to day operations (Project) ---//
 
+const wantedTreat = "hay cubes";
+for (const horse of horses) {
+    if (horse.favouriteTreat === wantedTreat) {
+        console.log(`${horse.name} loves ${wantedTreat}!`);
+        break;
+    }
+    console.log(`${horse.name} doesn't like ${wantedTreat}. Next horse!`);
+}
 
+function describeHorse(horse) {
+    if (horse.gender === "mare") {
+        console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. She loves ${horse.favouriteTreat}.`);
+    } else {
+        console.log(`${horse.name} is a ${horse.age}-year-old ${horse.color} ${horse.gender}. He loves ${horse.favouriteTreat}.`);
+    }
+}
+horses.forEach(describeHorse);
 
-// MAKING CHANGES TO THIS FILE FOR THIS NEW BRANCH 
-// Making another change in this line 
-//
+function moveOutside(isDark, horsesToMove) {
+    for (const horse of horsesToMove) {
+        if (isDark && horse.isOutside) {
+            horse.isOutside = false;
+            console.log(`${horse.name} has been moved inside because it is getting dark.`);
+        } else if (!isDark && !horse.isOutside) {
+            horse.isOutside = true;
+            console.log(`${horse.name} has been moved outside to spend time in the sun.`);
+        }
+    }
+}
 
+function feedHorses() {
+    for (const horse of horses) {
+        if (horse.isOutside) {
+            horse.isOutside = false;
+            console.log(`${horse.name} has been called inside.`);
+        }
+        horse.isHungry = false;
+        console.log(`${horse.name} has been fed ${horse.favouriteTreat} and is no longer hungry.`);
+    }
+}
 
-
-
-
-
-// MAKING CHANGES TO THIS FILE FOR THIS NEW BRANCH 
-// Making another change in this line 
-// 
+moveOutside(false, [thomas, harry]);   // morning
+moveOutside(true, [angel, thomas]);    // getting dark
+feedHorses();
