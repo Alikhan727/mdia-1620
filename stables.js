@@ -141,3 +141,18 @@ function moveOutside(isDark, horsesToMove) {
         }
     }
 }
+
+                        //--- Bonus ---//
+for(const horse of horses) {
+    horse.toggleLocation = function(){
+        if (this.isOutside === true) {
+            this.isOutside = false;
+        } else {
+            this.isOutside = true;
+        }
+    }
+}
+console.log(`${angel.name} is outside: ${angel.isOutside}`); //true
+angel.toggleLocation();
+console.log(`${angel.name} is outside: ${angel.isOutside}`); //false
+
